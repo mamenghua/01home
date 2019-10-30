@@ -17,9 +17,9 @@
               <el-submenu index="2">
                 <template slot="title"><i class="el-icon-s-goods icon"></i>商品管理</template>
                 <el-menu-item-group>
-                  <el-menu-item index="2-1">商品查询</el-menu-item>
-                  <el-menu-item index="2-2">新增商品</el-menu-item>
-                  <el-menu-item index="2-3">商品信息</el-menu-item>
+                  <el-menu-item index="2-1" @click="SearchProduct()">商品查询</el-menu-item>
+                  <el-menu-item index="2-2" @click="AddProduct()">新增商品</el-menu-item>
+                  <el-menu-item index="2-3" @click="MsgProduct()">商品信息</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
 
@@ -68,6 +68,15 @@ export default {
     },
     MsgUser(){
       this.$router.push('/MsgUser')
+    },
+    SearchProduct(){
+      this.$router.push('/SearchProduct')
+    },
+    AddProduct(){
+      this.$router.push('/AddProduct')
+    },
+    MsgProduct(){
+      this.$router.push('/MsgProduct')
     }
   }
 }

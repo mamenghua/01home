@@ -6,6 +6,10 @@ import SearchUser from '../views/SearchUser'
 import AddUser from '../views/AddUser'
 import MsgUser from '../views/MsgUser'
 
+import SearchProduct from '../views/SearchProduct'
+import AddProduct from '../views/AddProduct'
+import MsgProduct from '../views/MsgProduct'
+
 Vue.use(Router)
 
 export default new Router({
@@ -35,6 +39,21 @@ export default new Router({
           path:'/MsgUser',
           name:'MsgUser',
           component:MsgUser
+        },
+        {
+          path:'/SearchProduct',
+          name:'SearchProduct',
+          component:SearchProduct
+        },
+        {
+          path:'/AddProduct',
+          name:'AddProduct',
+          component:AddProduct
+        },
+        {
+          path:'/MsgProduct',
+          name:'MsgProduct',
+          component:MsgProduct
         },
       ]
     }
