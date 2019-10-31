@@ -35,10 +35,35 @@ export const HeadPOST = (url,token,params)=>{
     })
 }
 
-export const HeadDelete = (url,token,params)=>{
+export const HeadDelete = (url,token)=>{
     return axios({
         url:`${baseURL}${url}`,
         method:'delete',
+        headers:{
+            "authorization":"Bearer "+token
+        },
+    }).then((data)=>{
+        return data;
+    })
+}
+
+export const HeadPut = (url,token,params)=>{
+    return axios({
+        url:`${baseURL}${url}`,
+        method:'put',
+        headers:{
+            "authorization":"Bearer "+token
+        },
+        data:params
+    }).then((data)=>{
+        return data;
+    })
+}
+
+export const HeadPutpsw = (url,token,params)=>{
+    return axios({
+        url:`${baseURL}${url}`,
+        method:'put',
         headers:{
             "authorization":"Bearer "+token
         },

@@ -38,8 +38,7 @@
 </template>
 
 <script>
-import * as api from '../api/getUser.js'
-import * as API from '../api/deleteUser.js'
+import * as api from '../api/user.js'
 export default{
   name:'SearchUser',
   data(){
@@ -54,9 +53,7 @@ export default{
     this.$axios.get("http://api.cat-shop.penkuoer.com/api/v1/admin/users?",{
       headers:{'authorization':'Bearer '+this.token}
     }).then((data)=>{
-      // this.id = data.data.users[0]._id
-      // console.log(data.data.users)
-      this.tableData=data.data.users     //console.log(this.list)
+      this.tableData=data.data.users
     })
   },
   methods: {
@@ -67,11 +64,28 @@ export default{
       return 'text-align:center;line-height:50px';
     },
     handleDelete(index) {
-      API.deleteUser(localStorage.getItem('token'),{index}).then((data)=>{
-        console.log(data)
+      //删除
+      this.$axios.delete("http://api.cat-shop.penkuoer.com/api/v1/admin/users/"+index,{
+        headers:{'authorization':'Bearer '+this.token}
+      }).then((data)=>{
+        //提示消息
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        });
+        //再次获取 刷新路由
+        this.$axios.get("http://api.cat-shop.penkuoer.com/api/v1/admin/users?",{
+          headers:{'authorization':'Bearer '+this.token}
+        }).then((data)=>{
+          this.tableData=data.data.users
+        })
       })
+      // api.deleteUser(localStorage.getItem('token'),{index}).then((data)=>{
+      //   console.log(data)
+      // })
     }
-  }
+  },
+
 }
 </script>
 

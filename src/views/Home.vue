@@ -104,11 +104,10 @@ export default {
     text-align: center;
     line-height: 160px;
     min-height: 450px;
+    padding-bottom: 80px;
   }
 
   body > .el-container {
     margin-bottom: 40px;
   }
-
-
 </style>

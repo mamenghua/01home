@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import * as api from '../api/addUser.js'
+import * as api from '../api/user.js'
 export default{
   name:'AddUser',
   data(){
@@ -52,15 +52,21 @@ export default{
         api.addUser(localStorage.getItem('token'),{userName:this.userName,password:this.password,nickName:this.nickName,avatar:''}).then((data)=>{
           console.log(data)
           if(data.status==200){
-            this.$alert('添加用户成功', '系统消息', {
-            confirmButtonText: '确定',
-            callback: action => {
-              this.$message({
-                type: 'info',
-                message: `系统消息: ${ '添加成功' }`
-              });
+            if(data.data.code=='error'){
+              this.$alert(data.data.message, '系统消息', {
+                confirmButtonText: '确定'
+              })
+            }else{
+              this.$alert('添加用户成功', '系统消息', {
+              callback: action => {
+                this.$message({
+                  type: 'info',
+                  message: `系统消息: ${ '添加成功' }`
+                });
+              }
+            });
             }
-          });
+
           }
         })
       }
