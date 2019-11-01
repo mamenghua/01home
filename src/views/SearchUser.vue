@@ -32,8 +32,16 @@
           </template>
         </el-table-column>
       </el-table>
-
     </template>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :total="totalCount"
+      @next-click="next"
+      @prev-click="prev"
+      @current-change="currentChange"
+      >
+    </el-pagination>
   </div>
 </template>
 
@@ -46,14 +54,17 @@ export default{
       input1:'',
       token:localStorage.getItem('token'),
       id:'',
-      tableData:[]
+      tableData:[],
+      per:10,
+      totalCount:0,
+      currentPage:1
     }
   },
   mounted(){
-    this.$axios.get("http://api.cat-shop.penkuoer.com/api/v1/admin/users?",{
-      headers:{'authorization':'Bearer '+this.token}
-    }).then((data)=>{
+    api.getUser(localStorage.getItem('token'),{per:this.per,page:this.currentPage}).then((data)=>{
       this.tableData=data.data.users
+      this.totalCount = data.data.totalCount
+      console.log(data.data)
     })
   },
   methods: {
@@ -83,8 +94,29 @@ export default{
       // api.deleteUser(localStorage.getItem('token'),{index}).then((data)=>{
       //   console.log(data)
       // })
+    },
+    next(){
+      this.currentPage++
+      api.getUser(localStorage.getItem('token'),{per:this.per,page:this.currentPage}).then((data)=>{
+        this.tableData=data.data.users
+        this.totalCount = data.data.totalCount
+      })
+    },
+    prev(){
+      this.currentPage--
+      api.getUser(localStorage.getItem('token'),{per:this.per,page:this.currentPage}).then((data)=>{
+        this.tableData=data.data.users
+        this.totalCount = data.data.totalCount
+      })
+    },
+    currentChange(cpage){
+      console.log(cpage)
+      api.getUser(localStorage.getItem('token'),{per:this.per,page:cpage}).then((data)=>{
+        this.tableData=data.data.users
+        this.totalCount = data.data.totalCount
+      })
     }
-  },
+  }
 
 }
 </script>

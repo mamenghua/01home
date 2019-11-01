@@ -9,7 +9,7 @@
         <span class="tip">用户ID：</span><el-input  :placeholder="data._id" :disabled="true" class='ipt'></el-input><br>
         <span class="tip">用户名：</span><el-input placeholder="用户名" v-model="userName" class='ipt'>{{data.userName}}</el-input><br>
         <span class="tip">用户昵称：</span><el-input placeholder="用户昵称" v-model="nickName" class='ipt'>{{data.nickName}}</el-input><br>
-        <span class="tip">用户密码：</span><el-input placeholder="加密后密码"  :disabled="true" v-model="password" class='ipt'>{{data.password}}</el-input><br>
+        <span class="tip">用户密码：</span><el-input placeholder="加密后密码" v-model="password"  class='ipt' @focus="shuru">{{data.password}}</el-input><br>
         <span class="tip">用户地址：</span><el-input :placeholder="addresses" :disabled="true" class='ipt'></el-input><br>
       <div class="sty">
         <el-button type="success" class='btn' @click="save()">保存</el-button>
@@ -32,7 +32,8 @@ export default{
       _id:'',
       userName:'',
       nickName:'',
-      password:''
+      password:'',
+      avatar:''
     }
   },
   methods:{
@@ -46,6 +47,7 @@ export default{
           this._id=data.data._id
           this.nickName=data.data.nickName
           this.password=data.data.password
+          this.avatar=data.data.avatar
           console.log(this.data)
         }else{
           this.$message({
@@ -73,7 +75,10 @@ export default{
       })
     },
     save(){
-      api.updataUser(this.input,localStorage.getItem('token'),{userName:this.userName,nickName:this.nickName,avatar:''}).then((data)=>{
+      api.resetUserPassword(this.input,localStorage.getItem('token'),{password:this.password}).then((data)=>{
+        console.log(data.data)
+      })
+      api.updataUser(this.input,localStorage.getItem('token'),{userName:this.userName,nickName:this.nickName,avatar:this.avatar}).then((data)=>{
         if(data.status==200){
           this.$message({
             type: 'success',
@@ -81,7 +86,6 @@ export default{
           });
         }
       })
-
     },
     del(){
       api.deleteUser(this.input,localStorage.getItem('token')).then((data)=>{
@@ -97,7 +101,11 @@ export default{
           this.password=''
         }
       })
+    },
+    shuru(){
+      this.password=''
     }
+
   }
 }
 </script>

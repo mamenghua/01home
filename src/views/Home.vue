@@ -1,7 +1,7 @@
 <template>
   <div>
       <el-container>
-        <el-header>欢迎使用首家后台管理系统<span class="el-icon-toilet-paper" @click="out">注销</span></el-header>
+        <el-header><h1>欢迎使用首家后台管理系统</h1><span class="el-icon-toilet-paper" @click="out">注销</span> <span class="name">{{nickName}}</span></el-header>
         <el-container>
           <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
             <el-menu>
@@ -17,7 +17,7 @@
               <el-submenu index="2">
                 <template slot="title"><i class="el-icon-s-goods icon"></i>商品管理</template>
                 <el-menu-item-group>
-                  <el-menu-item index="2-1">商品查询</el-menu-item>
+                  <el-menu-item index="2-1" @click="SearchProduct()">商品查询</el-menu-item>
                   <el-menu-item index="2-2">新增商品</el-menu-item>
                   <el-menu-item index="2-3">商品信息</el-menu-item>
                 </el-menu-item-group>
@@ -35,8 +35,8 @@
               <el-submenu index="4">
                 <template slot="title"><i class="el-icon-s-order icon"></i>订单管理</template>
                 <el-menu-item-group>
-                  <el-menu-item index="4-1">查询订单</el-menu-item>
-                  <el-menu-item index="4-2">订单信息</el-menu-item>
+                  <el-menu-item index="4-1" @click="SearchOrder()">查询订单</el-menu-item>
+                  <el-menu-item index="4-2" @click="MsgOrder()">订单信息</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
 
@@ -56,8 +56,14 @@
 
 export default {
   name: 'Home',
+  data(){
+    return{
+      nickName:''
+    }
+  },
   methods:{
     out(){
+      localStorage.removeItem('token')
       this.$router.push('/')
     },
     SearchUser(){
@@ -68,6 +74,37 @@ export default {
     },
     MsgUser(){
       this.$router.push('/MsgUser')
+    },
+    MsgOrder(){
+      this.$router.push('/MsgOrder')
+    },
+    SearchOrder(){
+      this.$router.push('/SearchOrder')
+    },
+    SearchProduct(){
+      this.$router.push('/SearchProduct')
+    }
+  },
+  mounted(){
+    console.log(localStorage.getItem('token'))
+    if(localStorage.getItem('token')==null){
+      this.$notify({
+        title: '警告',
+        message: '您暂未登录,5秒后为您返回登陆页面',
+        type: 'warning'
+      });
+
+      var timer = setTimeout(()=>{
+        this.$router.push('/')
+      },5000)
+      timer()
+      clearInterval(timer)
+    }else{
+      this.$axios.get("http://api.cat-shop.penkuoer.com/api/v1/users/manager_info",{
+        headers:{'authorization':'Bearer '+localStorage.getItem('token')}
+      }).then((data)=>{
+        this.nickName=data.data.nickName
+      })
     }
   }
 }
@@ -76,7 +113,16 @@ export default {
 </script>
 
 <style scoped>
-  span{
+  h1{
+    margin: 0;
+    line-height: 60px;
+    display: inline;
+  }
+  .name{
+    float: right;
+    margin-right: 30px;
+  }
+  .el-icon-toilet-paper{
     float: right;
     color: #333333;
     line-height: 60px;

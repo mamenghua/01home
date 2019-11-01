@@ -16,7 +16,7 @@ export const HeadGET = (url,token,params)=>{
         headers:{
             "authorization":"Bearer "+token
         },
-        data:params
+        params:params
     }).then((data)=>{
         return data;
     })
@@ -61,6 +61,32 @@ export const HeadPut = (url,token,params)=>{
 }
 
 export const HeadPutpsw = (url,token,params)=>{
+    return axios({
+        url:`${baseURL}${url}`,
+        method:'put',
+        headers:{
+            "authorization":"Bearer "+token
+        },
+        data:params
+    }).then((data)=>{
+        return data;
+    })
+}
+
+export const GetOrder = (url,token,params)=>{
+    return axios({
+        url:`${baseURL}${url}`,
+        method:'get',
+        headers:{
+            "authorization":"Bearer "+token
+        },
+        data:params
+    }).then((data)=>{
+        return data;
+    })
+}
+
+export const ChangeOrder = (url,token,params)=>{
     return axios({
         url:`${baseURL}${url}`,
         method:'put',
