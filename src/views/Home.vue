@@ -26,9 +26,9 @@
               <el-submenu index="3">
                 <template slot="title"><i class="el-icon-s-unfold icon"></i>商品分类管理</template>
                 <el-menu-item-group>
-                  <el-menu-item index="3-1">查询商品分类</el-menu-item>
-                  <el-menu-item index="3-2">新增商品分类</el-menu-item>
-                  <el-menu-item index="3-3">商品信息</el-menu-item>
+                  <el-menu-item index="3-1" @click="SearchProductClassify()">查询商品分类</el-menu-item>
+                  <el-menu-item index="3-2" @click="AddProductClassify()">新增商品分类</el-menu-item>
+                  <el-menu-item index="3-3" @click="MsgProductClassify()">商品分类信息</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
 
@@ -77,6 +77,15 @@ export default {
     },
     MsgProduct(){
       this.$router.push('/MsgProduct')
+    },
+    SearchProductClassify(){
+      this.$router.push('/SearchProductClassify')
+    },
+    AddProductClassify(){
+      this.$router.push('/AddProductClassify')
+    },
+    MsgProductClassify(){
+      this.$router.push('/MsgProductClassify')
     }
   }
 }

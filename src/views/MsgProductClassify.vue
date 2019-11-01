@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2>商品信息</h2>
+    <h2>商品分类信息</h2>
     <div class="sty">
-      <el-input placeholder="请输入产品id" v-model="input"></el-input>
+      <el-input placeholder="请输入商品分类id" v-model="input"></el-input>
       <el-button type="primary" icon="el-icon-search" @click="search()">搜索</el-button>
     </div>
     <div class="touxiang">
@@ -10,28 +10,25 @@
     </div>
 
     <div class="sty">
-      <span class="tip">商品ID：</span>
+      <span class="tip">商品分类ID：</span>
       <el-input v-model="data._id" :disabled="true" class="ipt"></el-input>
     </div>
     <div class="sty">
-      <span class="tip">商品名：</span>
+      <span class="tip">商品分类名：</span>
       <el-input v-model="name" class="ipt"></el-input>
     </div>
     <div class="sty">
-      <span class="tip">商品描述：</span>
+      <span class="tip">商品分类描述：</span>
       <el-input v-model="descriptions" class="ipt"></el-input>
     </div>
+    
     <div class="sty">
-      <span class="tip">商品价格：</span>
-      <el-input v-model="price" class="ipt"></el-input>
+      <span class="tip">分类上架时间：</span>
+      <el-input v-model="createdAt" :disabled="true" class="ipt"></el-input>
     </div>
     <div class="sty">
-      <span class="tip">商品库存：</span>
-      <el-input v-model="quantity" :disabled="true" class="ipt"></el-input>
-    </div>
-    <div class="sty">
-      <span class="tip">商品分类id：</span>
-      <el-input v-model="productCategory" :disabled="true" class="ipt"></el-input>
+      <span class="tip">分类更新时间：</span>
+      <el-input v-model="updatedAt" :disabled="true" class="ipt"></el-input>
     </div>
 
     <div class="sty"></div>
@@ -45,22 +42,17 @@
 <script>
 import axios from "axios";
 export default {
-  name: "MsgProduct",
+  name: "MsgProductClassify",
   data() {
     return {
       input: "",
       token: localStorage.getItem("token"),
       data: {},
 
-      content: "",
       coverImg: "",
       createdAt: "",
       descriptions: "",
       name: "",
-      onSale: "",
-      price: "",
-      productCategory: "",
-      quantity: "",
       updatedAt: "",
       _id: ""
     };
@@ -69,7 +61,7 @@ export default {
     search() {
       axios
         .get(
-          "http://api.cat-shop.penkuoer.com/api/v1/admin/products/" +this.input,
+          "http://api.cat-shop.penkuoer.com/api/v1/admin/product_categories/" +this.input,
           {
             headers: {
               authorization: "Bearer " + localStorage.getItem("token")
@@ -80,15 +72,10 @@ export default {
           if (data.data._id !== undefined) {
             this.data = data.data;
             console.log(data.data);
-            this.content = data.data.content;
             this.coverImg = data.data.coverImg;
             this.createdAt = data.data.createdAt;
             this.descriptions = data.data.descriptions;
             this.name = data.data.name;
-            this.onSale = data.data.onSale;
-            this.price = data.data.price;
-            this.productCategory = data.data.productCategory;
-            this.quantity = data.data.quantity;
             this.updatedAt = data.data.updatedAt;
             this._id = data.data._id;
           } else {
@@ -108,7 +95,7 @@ export default {
     // 点击保存按钮
     open() {
       if (this.data._id) {
-        this.$confirm("此操作将保存该商品, 是否继续?", "提示", {
+        this.$confirm("此操作将保存该商品分类, 是否继续?", "提示", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
@@ -117,7 +104,7 @@ export default {
             // 确认保存，执行保存
             axios({
               url:
-                "http://api.cat-shop.penkuoer.com/api/v1/admin/products/" +
+                "http://api.cat-shop.penkuoer.com/api/v1/admin/product_categories/" +
                 this.data._id,
               method: "put",
               headers: {
@@ -126,10 +113,7 @@ export default {
               data: {
                 name: this.name,
                 descriptions: this.descriptions,
-                quantity: this.quantity,
-                price: parseInt(this.price),
-                coverImg: this.data.coverImg,
-                productCategory: this.productCategory
+                coverImg: this.data.coverImg
               }
             }).then(data => {
               console.log(data.data);
@@ -155,7 +139,7 @@ export default {
       } else {
         this.$message({
           type: "info",
-          message: "请先根据id搜索商品！"
+          message: "请先根据id搜索商品分类！"
         });
       }
     }

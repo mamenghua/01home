@@ -32,6 +32,8 @@
 
 <script>
 import * as api from '../api/product'
+import qs from "qs";
+
 export default{
   name:'AddProduct',
   data(){
@@ -41,10 +43,13 @@ export default{
       quantity:'',
       price:'',
       productCategory:''
-
     }
   },
   methods:{
+
+
+
+
     commit(){
       if(this.name==''){
         this.$refs.name.style.display='inline'
@@ -59,18 +64,24 @@ export default{
         this.$refs.descriptions.style.display='none'
         this.$refs.quantity.style.display='inline'
       }else{
-        console.log(this.name);
-        // api.addProducts(localStorage.getItem('token'),{
-        //     name:this.name,
-        //     descriptions:this.descriptions,
-        //     quantity:this.quantity,
-        //     price:this.price,
-        //     coverImg:"",
-        //     productCategory:this.productCategory
-        // }).then((data)=>{
-        //   console.log(data);
-        // })
-        
+        console.log(parseInt(this.quantity));
+        api.addProducts(localStorage.getItem('token'),{
+            name:this.name,
+            descriptions:this.descriptions,
+            quantity:parseInt(this.quantity),
+            price:parseInt(this.price),
+            coverImg:"",
+            productCategory:"5d9b424efe04943d5e540943"
+        }).then((data)=>{
+          if(data.data){
+            console.log("添加成功！"+data.data);
+          }else{
+            console.log("添加失败！");
+          }
+        }).catch((data)=>{
+          console.log(data);
+        })
+
 
       }
     }
@@ -82,7 +93,6 @@ export default{
   h2{
     line-height: 20px;
     margin: 0;
-
   }
   .el-input{
     height: 50px;
