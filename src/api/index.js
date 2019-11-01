@@ -22,10 +22,17 @@ export const HeadGET = (url,token,params)=>{
     })
 }
 
+<<<<<<< HEAD
 export const HeadPut = (url,token,params)=>{
     return axios({
         url:`${baseURL}${url}`,
         method:'put',
+=======
+export const HeadPOST = (url,token,params)=>{
+    return axios({
+        url:`${baseURL}${url}`,
+        method:'post',
+>>>>>>> yzh
         headers:{
             "authorization":"Bearer "+token
         },
@@ -35,20 +42,13 @@ export const HeadPut = (url,token,params)=>{
     })
 }
 
+<<<<<<< HEAD
 
 export const HeadPOST = (url,token,params)=>{
     return axios({
         url:`${baseURL}${url}`,
         method:'post',
-        headers:{
-            "authorization":"Bearer "+token
-        },
-        data:params
-    }).then((data)=>data);
-    
-}
-
-
+=======
 export const HeadDelete = (url,token)=>{
     return axios({
         url:`${baseURL}${url}`,
@@ -61,6 +61,33 @@ export const HeadDelete = (url,token)=>{
     })
 }
 
+export const HeadPut = (url,token,params)=>{
+    return axios({
+        url:`${baseURL}${url}`,
+        method:'put',
+>>>>>>> yzh
+        headers:{
+            "authorization":"Bearer "+token
+        },
+        data:params
+<<<<<<< HEAD
+    }).then((data)=>data);
+    
+}
+
+
+export const HeadDelete = (url,token)=>{
+    return axios({
+        url:`${baseURL}${url}`,
+        method:'delete',
+        headers:{
+            "authorization":"Bearer "+token
+        },
+=======
+    }).then((data)=>{
+        return data;
+    })
+}
 
 export const HeadPutpsw = (url,token,params)=>{
     return axios({
@@ -69,10 +96,49 @@ export const HeadPutpsw = (url,token,params)=>{
         headers:{
             "authorization":"Bearer "+token
         },
-        params:params
+        data:params
+>>>>>>> yzh
     }).then((data)=>{
         return data;
     })
 }
 
+<<<<<<< HEAD
+
+export const HeadPutpsw = (url,token,params)=>{
+=======
+export const GetOrder = (url,token,params)=>{
+    return axios({
+        url:`${baseURL}${url}`,
+        method:'get',
+        headers:{
+            "authorization":"Bearer "+token
+        },
+        data:params
+    }).then((data)=>{
+        return data;
+    })
+}
+
+export const ChangeOrder = (url,token,params)=>{
+>>>>>>> yzh
+    return axios({
+        url:`${baseURL}${url}`,
+        method:'put',
+        headers:{
+            "authorization":"Bearer "+token
+        },
+<<<<<<< HEAD
+        params:params
+=======
+        data:params
+>>>>>>> yzh
+    }).then((data)=>{
+        return data;
+    })
+}
+<<<<<<< HEAD
+
    
+=======
+>>>>>>> yzh
