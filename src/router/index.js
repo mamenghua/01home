@@ -5,6 +5,12 @@ import Home from '../views/Home'
 import SearchUser from '../views/SearchUser'
 import AddUser from '../views/AddUser'
 import MsgUser from '../views/MsgUser'
+<<<<<<< HEAD
+=======
+import MsgOrder from '../views/MsgOrder'
+import SearchOrder from '../views/SearchOrder'
+import SearchProduct from '../views/SearchProduct'
+>>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
 
 Vue.use(Router)
 
@@ -36,6 +42,24 @@ export default new Router({
           name:'MsgUser',
           component:MsgUser
         },
+<<<<<<< HEAD
+=======
+        {
+          path:'/MsgOrder',
+          name:'MsgOrder',
+          component:MsgOrder
+        },
+        {
+          path:'/SearchOrder',
+          name:'SearchOrder',
+          component:SearchOrder
+        },
+        {
+          path:'/SearchProduct',
+          name:'SearchProduct',
+          component:SearchProduct
+        },
+>>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
       ]
     }
   ]
