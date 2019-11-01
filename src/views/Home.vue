@@ -1,11 +1,7 @@
 <template>
   <div>
       <el-container>
-<<<<<<< HEAD
-        <el-header>欢迎使用首家后台管理系统<span class="el-icon-toilet-paper" @click="out">注销</span></el-header>
-=======
         <el-header><h1>欢迎使用首家后台管理系统</h1><span class="el-icon-toilet-paper" @click="out">注销</span> <span class="name">{{nickName}}</span></el-header>
->>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
         <el-container>
           <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
             <el-menu>
@@ -21,19 +17,9 @@
               <el-submenu index="2">
                 <template slot="title"><i class="el-icon-s-goods icon"></i>商品管理</template>
                 <el-menu-item-group>
-<<<<<<< HEAD
                   <el-menu-item index="2-1" @click="SearchProduct()">商品查询</el-menu-item>
                   <el-menu-item index="2-2" @click="AddProduct()">新增商品</el-menu-item>
                   <el-menu-item index="2-3" @click="MsgProduct()">商品信息</el-menu-item>
-=======
-<<<<<<< HEAD
-                  <el-menu-item index="2-1">商品查询</el-menu-item>
-=======
-                  <el-menu-item index="2-1" @click="SearchProduct()">商品查询</el-menu-item>
->>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
-                  <el-menu-item index="2-2">新增商品</el-menu-item>
-                  <el-menu-item index="2-3">商品信息</el-menu-item>
->>>>>>> yzh
                 </el-menu-item-group>
               </el-submenu>
 
@@ -49,13 +35,8 @@
               <el-submenu index="4">
                 <template slot="title"><i class="el-icon-s-order icon"></i>订单管理</template>
                 <el-menu-item-group>
-<<<<<<< HEAD
-                  <el-menu-item index="4-1">查询订单</el-menu-item>
-                  <el-menu-item index="4-2">订单信息</el-menu-item>
-=======
                   <el-menu-item index="4-1" @click="SearchOrder()">查询订单</el-menu-item>
                   <el-menu-item index="4-2" @click="MsgOrder()">订单信息</el-menu-item>
->>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
                 </el-menu-item-group>
               </el-submenu>
 
@@ -75,10 +56,6 @@
 
 export default {
   name: 'Home',
-<<<<<<< HEAD
-  methods:{
-    out(){
-=======
   data(){
     return{
       nickName:''
@@ -87,7 +64,6 @@ export default {
   methods:{
     out(){
       localStorage.removeItem('token')
->>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
       this.$router.push('/')
     },
     SearchUser(){
@@ -98,7 +74,6 @@ export default {
     },
     MsgUser(){
       this.$router.push('/MsgUser')
-<<<<<<< HEAD
     },
     SearchProduct(){
       this.$router.push('/SearchProduct')
@@ -117,18 +92,12 @@ export default {
     },
     MsgProductClassify(){
       this.$router.push('/MsgProductClassify')
-=======
-<<<<<<< HEAD
-=======
     },
     MsgOrder(){
       this.$router.push('/MsgOrder')
     },
     SearchOrder(){
       this.$router.push('/SearchOrder')
-    },
-    SearchProduct(){
-      this.$router.push('/SearchProduct')
     }
   },
   mounted(){
@@ -151,8 +120,6 @@ export default {
       }).then((data)=>{
         this.nickName=data.data.nickName
       })
->>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
->>>>>>> yzh
     }
   }
 }
@@ -161,9 +128,6 @@ export default {
 </script>
 
 <style scoped>
-<<<<<<< HEAD
-  span{
-=======
   h1{
     margin: 0;
     line-height: 60px;
@@ -174,7 +138,6 @@ export default {
     margin-right: 30px;
   }
   .el-icon-toilet-paper{
->>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
     float: right;
     color: #333333;
     line-height: 60px;
@@ -202,18 +165,10 @@ export default {
     text-align: center;
     line-height: 160px;
     min-height: 450px;
-<<<<<<< HEAD
-=======
     padding-bottom: 80px;
->>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
   }
 
   body > .el-container {
     margin-bottom: 40px;
   }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
 </style>

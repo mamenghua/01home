@@ -1,9 +1,6 @@
 <template>
   <div>
-<<<<<<< HEAD
     <h2>用户查询</h2>
-=======
-    <template>
       <el-table
         :data="tableData"
         :cell-style="cellStyle" :header-cell-style="rowClass"
@@ -35,7 +32,6 @@
           </template>
         </el-table-column>
       </el-table>
-    </template>
     <el-pagination
       background
       layout="prev, pager, next"
@@ -45,15 +41,10 @@
       @current-change="currentChange"
       >
     </el-pagination>
->>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD
-export default{
-  name:'SearchUser'
-=======
 import * as api from '../api/user.js'
 export default{
   name:'SearchUser',
@@ -125,14 +116,11 @@ export default{
       })
     }
   }
->>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
 
 }
 </script>
 
 <style scoped>
-<<<<<<< HEAD
-=======
   .el-input{
     height: 50px;
     line-height: 50px;
@@ -149,5 +137,4 @@ export default{
     position: relative;
     line-height: 10px;
   }
->>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
 </style>

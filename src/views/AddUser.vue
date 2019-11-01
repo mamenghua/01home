@@ -1,8 +1,6 @@
 <template>
   <div>
     <h2>新增用户</h2>
-<<<<<<< HEAD
-=======
     <div class="sty">
       <el-avatar icon="el-icon-user-solid"></el-avatar>
     </div>
@@ -21,16 +19,10 @@
     <div class="sty">
       <el-button type="success" @click='commit'>提交</el-button>
     </div>
->>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD
-export default{
-  name:'AddUser'
-
-=======
 import * as api from '../api/user.js'
 export default{
   name:'AddUser',
@@ -80,13 +72,10 @@ export default{
       }
     }
   }
->>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
 }
 </script>
 
 <style scoped>
-<<<<<<< HEAD
-=======
   h2{
     line-height: 20px;
     margin: 0;
@@ -108,5 +97,4 @@ export default{
   .sty{
     height: 50px;
   }
->>>>>>> 20f568ab2ae754579ec93c549dc2399fb1b26af7
 </style>
