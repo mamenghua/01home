@@ -21,6 +21,10 @@
       <span class="tip" ref="price">  *商品价格不可为空</span>
     </div>
     <div class="sty">
+      <el-input v-model="coverImg" placeholder="请输入商品图片，网络链接地址"></el-input>
+      <span class="tip" ref="coverImg">  *商品图片不可为空</span>
+    </div>
+    <div class="sty">
       <el-input v-model="productCategory" placeholder="商品分类id"></el-input>
       <span class="tip" ref="productCategory">  *商品分类id不可为空</span>
     </div>
@@ -42,6 +46,7 @@ export default{
       descriptions:'',
       quantity:'',
       price:'',
+      coverImg:'',
       productCategory:''
     }
   },
@@ -70,7 +75,7 @@ export default{
             descriptions:this.descriptions,
             quantity:parseInt(this.quantity),
             price:parseInt(this.price),
-            coverImg:"",
+            coverImg:this.coverImg,
             productCategory:"5d9b424efe04943d5e540943"
         }).then((data)=>{
           if(data.data){
