@@ -29,6 +29,7 @@ export default {
       password: ""
     };
   },
+
   methods: {
     tap() {
       api
@@ -51,7 +52,8 @@ export default {
       }else{
         this.$refs.password.type = "password";
       }
-    }
+    },
+
   }
 };
 </script>
@@ -86,7 +88,9 @@ export default {
   color: #fff;
   outline: none;
 }
-
+.loginBtn{
+  cursor: pointer;
+}
 .inputBox {
     background: rgba(255,255,255,0.6);
     margin: 20px auto;
