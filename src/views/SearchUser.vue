@@ -74,22 +74,54 @@ export default{
       return 'text-align:center;line-height:50px';
     },
     handleDelete(index) {
-      //删除
-      this.$axios.delete("http://api.cat-shop.penkuoer.com/api/v1/admin/users/"+index,{
-        headers:{'authorization':'Bearer '+this.token}
-      }).then((data)=>{
-        //提示消息
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
-        });
-        //再次获取 刷新路由
-        this.$axios.get("http://api.cat-shop.penkuoer.com/api/v1/admin/users?",{
+      this.$confirm("此操作将永久删除该用户, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+      .then(()=>{
+        this.$axios.delete("http://api.cat-shop.penkuoer.com/api/v1/admin/users/"+index,{
           headers:{'authorization':'Bearer '+this.token}
         }).then((data)=>{
-          this.tableData=data.data.users
+          //提示消息
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+          //再次获取 刷新路由
+          this.$axios.get("http://api.cat-shop.penkuoer.com/api/v1/admin/users?",{
+            headers:{'authorization':'Bearer '+this.token}
+          }).then((data)=>{
+            this.tableData=data.data.users
+          })
         })
       })
+      .catch(()=>{
+         this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+      })
+
+
+
+      //删除
+      // this.$axios.delete("http://api.cat-shop.penkuoer.com/api/v1/admin/users/"+index,{
+      //   headers:{'authorization':'Bearer '+this.token}
+      // }).then((data)=>{
+      //   //提示消息
+      //   this.$message({
+      //     type: 'success',
+      //     message: '删除成功!'
+      //   });
+      //   //再次获取 刷新路由
+      //   this.$axios.get("http://api.cat-shop.penkuoer.com/api/v1/admin/users?",{
+      //     headers:{'authorization':'Bearer '+this.token}
+      //   }).then((data)=>{
+      //     this.tableData=data.data.users
+      //   })
+      // })
+
       // api.deleteUser(localStorage.getItem('token'),{index}).then((data)=>{
       //   console.log(data)
       // })

@@ -47,7 +47,12 @@ export default {
               message: `系统消息: ${ '账号或密码错误' }`
             });
           }
-        });
+        }).catch(data =>{
+          this.$message({
+            type: 'danger',
+            message: `系统消息: ${ '账号或密码错误' }`
+          });
+        })
     },
     lookPwd(){
       if(this.$refs.password.type == "password"){
