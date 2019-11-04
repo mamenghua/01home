@@ -26,14 +26,25 @@ export default {
   data() {
     return {
       username: "",
-      password: ""
+      password: "",
+      timeout:null
     };
   },
 
   methods: {
     tap() {
-      api
-        .login(
+      // console.log(this.timeout);
+      if(this.timeout){
+        // console.log("this.timeout不为空"+this.timeout)
+        clearTimeout(this.timeout);
+        this.timeout = null
+      }else{
+        // console.log("this.timeout为空"+this.timeout)
+        this.timeout = setTimeout(()=>{
+
+
+
+          api.login(
           qs.stringify({ userName: this.username, password: this.password })
         )
         .then(data => {
@@ -52,7 +63,14 @@ export default {
             type: 'danger',
             message: `系统消息: ${ '账号或密码错误' }`
           });
-        })
+        });
+          clearTimeout(this.timeout);
+          this.timeout = null;
+          
+        },500);
+      }
+      
+      
     },
     lookPwd(){
       if(this.$refs.password.type == "password"){
