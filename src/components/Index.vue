@@ -42,7 +42,10 @@ export default {
             localStorage.setItem("token", data.data.token);
             this.$router.push("/Home");
           } else {
-            alert("账号或密码错误！");
+            this.$message({
+              type: 'danger',
+              message: `系统消息: ${ '账号或密码错误' }`
+            });
           }
         });
     },

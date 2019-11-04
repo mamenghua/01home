@@ -76,6 +76,9 @@ export default{
 </script>
 
 <style scoped>
+  h2{
+    line-height: 30px;
+  }
   .el-input{
     height: 50px;
     line-height: 50px;
