@@ -7,17 +7,11 @@
       stripe
       style="width: 100%"
     >
-      <el-table-column prop="_id" label="商品id"></el-table-column>
-      <el-table-column prop="coverImg" label="商品图">
-        <!-- 图片的显示 -->
-       <template   slot-scope="scope">
-          <img :src="scope.row.coverImg"  min-width="70" height="70" />
-       </template>
-      </el-table-column>
-      <el-table-column prop="name" label="产品名"></el-table-column>
+      <el-table-column prop="_id" label="商品分类id"></el-table-column>
+      <el-table-column prop="name" label="产品分类名"></el-table-column>
       <el-table-column prop="descriptions" label="描述"></el-table-column>
-      <el-table-column prop="price" label="价格"></el-table-column>
-      <el-table-column prop="quantity" label="库存"></el-table-column>
+      <el-table-column prop="createdAt" label="上架时间"></el-table-column>
+      <el-table-column prop="updatedAt" label="最新更新时间"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button type="danger" icon="el-icon-delete" circle @click="open(scope.row._id)"></el-button>
@@ -36,17 +30,17 @@
 </template>
 
 <script>
-import * as api from "../api/product";
+import * as api from "../api/productClassify";
 import axios from "axios";
 import qs from "qs";
 export default {
-  name: "SearchProduct",
+  name: "SearchProductClassify",
   data() {
     return {
       tableData: [],
-      totalCount: 0,
-      page: 10,
-      currentPage: 1
+      totalCount:0,
+      page:10,
+      currentPage:1
     };
   },
   methods: {
@@ -59,19 +53,18 @@ export default {
 
     // 点击删除按钮，弹出提示信息
     open(index) {
-      console.log(index);
-
-      this.$confirm("此操作将永久删除该商品, 是否继续?", "提示", {
+      this.$confirm("此操作将永久删除该商品分类, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
       })
         .then(() => {
           // 确认删除，执行删除
-
+          console.log(index);
           axios({
             url:
-              "http://api.cat-shop.penkuoer.com/api/v1/admin/products/" + index,
+              "http://api.cat-shop.penkuoer.com/api/v1/admin/product_categories/" +
+              index,
             method: "delete",
             headers: {
               authorization: "Bearer " + localStorage.getItem("token")
@@ -81,23 +74,23 @@ export default {
             if (data.data) {
               this.$message({
                 type: "success",
-                message: "删除成功!"
+                message: "删除商品分类成功！"
               });
               api
-                .getProducts(localStorage.getItem("token"), {
+                .getProductsClassify(localStorage.getItem("token"), {
                   per: 10,
                   page: 1,
                   name: ""
                 })
                 .then(data => {
-                  console.log(data.data.products);
-                  this.tableData = data.data.products;
+                  console.log(data.data.categories);
+                  this.tableData = data.data.categories;
                   this.totalCount = data.data.totalCount;
                 });
             } else {
               this.$message({
                 type: "success",
-                message: "删除失败!"
+                message: "删除商品分类失败"
               });
             }
           });
@@ -109,57 +102,41 @@ export default {
           });
         });
     },
-    next() {
-      this.currentPage++;
-      api
-        .getProducts(localStorage.getItem("token"), {
-          per: this.per,
-          page: this.currentPage,
-
-          name: ""
-        })
-        .then(data => {
-          console.log(data.data.products);
-          this.tableData = data.data.products;
-          this.totalCount = data.data.totalCount;
-        });
+    next(){
+      this.currentPage++
+      api.getProductsClassify(localStorage.getItem('token'),{per:this.per,page:this.currentPage,name: ""}).then((data)=>{
+        this.totalCount = data.data.totalCount
+        this.tableData = data.data.categories
+        
+      })
     },
-    prev() {
-      this.currentPage--;
-      api.getProducts(localStorage.getItem("token"), {
-          per: this.per,
-          page: this.currentPage,
-
-          name: ""
-        })
-        .then(data => {
-          console.log(data.data.products);
-          this.tableData = data.data.products;
-          this.totalCount = data.data.totalCount;
-        });
+    prev(){
+      this.currentPage--
+      api.getProductsClassify(localStorage.getItem('token'),{per:this.per,page:this.currentPage,name: ""}).then((data)=>{
+        this.totalCount = data.data.totalCount
+        this.tableData = data.data.categories
+        
+      })
     },
-    currentChange(cpage) {
-      console.log(cpage);
-      api
-        .getProducts(localStorage.getItem("token"), {
-          per: this.per,
-          page: cpage,
-          name: ""
-        })
-        .then(data => {
-          this.tableData = data.data.products;
-          this.totalCount = data.data.totalCount;
-        });
+    currentChange(cpage){
+      console.log(cpage)
+      api.getProductsClassify(localStorage.getItem('token'),{per:this.per,page:cpage,name: ""}).then((data)=>{
+        this.totalCount = data.data.totalCount
+        this.tableData = data.data.categories
+        
+      })
     }
   },
   mounted() {
-    api.getProducts(localStorage.getItem("token"), {
+    api
+      .getProductsClassify(localStorage.getItem("token"), {
         per: 10,
         page: 1,
         name: ""
-      }).then(data => {
-        console.log(data.data.products);
-        this.tableData = data.data.products;
+      })
+      .then(data => {
+        console.log(data.data.categories);
+        this.tableData = data.data.categories;
         this.totalCount = data.data.totalCount;
       });
   }

@@ -9,6 +9,13 @@ import MsgOrder from '../views/MsgOrder'
 import SearchOrder from '../views/SearchOrder'
 import SearchProduct from '../views/SearchProduct'
 
+import AddProduct from '../views/AddProduct'
+import MsgProduct from '../views/MsgProduct'
+
+import SearchProductClassify from '../views/SearchProductClassify'
+import AddProductClassify from '../views/AddProductClassify'
+import MsgProductClassify from '../views/MsgProductClassify'
+
 Vue.use(Router)
 
 export default new Router({
@@ -39,6 +46,38 @@ export default new Router({
           name:'MsgUser',
           component:MsgUser
         },
+
+        {
+          path:'/SearchProduct',
+          name:'SearchProduct',
+          component:SearchProduct
+        },
+        {
+          path:'/AddProduct',
+          name:'AddProduct',
+          component:AddProduct
+        },
+        {
+          path:'/MsgProduct',
+          name:'MsgProduct',
+          component:MsgProduct
+        },
+        {
+          path:'/SearchProductClassify',
+          name:'SearchProductClassify',
+          component:SearchProductClassify
+        },
+        {
+          path:'/AddProductClassify',
+          name:'AddProductClassify',
+          component:AddProductClassify
+        },
+        {
+          path:'/MsgProductClassify',
+          name:'MsgProductClassify',
+          component:MsgProductClassify
+        },
+
         {
           path:'/MsgOrder',
           name:'MsgOrder',
@@ -48,12 +87,8 @@ export default new Router({
           path:'/SearchOrder',
           name:'SearchOrder',
           component:SearchOrder
-        },
-        {
-          path:'/SearchProduct',
-          name:'SearchProduct',
-          component:SearchProduct
-        },
+        }
+
       ]
     }
   ]

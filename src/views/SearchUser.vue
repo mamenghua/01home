@@ -1,6 +1,6 @@
 <template>
   <div>
-    <template>
+    <h2>用户查询</h2>
       <el-table
         :data="tableData"
         :cell-style="cellStyle" :header-cell-style="rowClass"
@@ -32,7 +32,6 @@
           </template>
         </el-table-column>
       </el-table>
-    </template>
     <el-pagination
       background
       layout="prev, pager, next"

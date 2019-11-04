@@ -18,17 +18,17 @@
                 <template slot="title"><i class="el-icon-s-goods icon"></i>商品管理</template>
                 <el-menu-item-group>
                   <el-menu-item index="2-1" @click="SearchProduct()">商品查询</el-menu-item>
-                  <el-menu-item index="2-2">新增商品</el-menu-item>
-                  <el-menu-item index="2-3">商品信息</el-menu-item>
+                  <el-menu-item index="2-2" @click="AddProduct()">新增商品</el-menu-item>
+                  <el-menu-item index="2-3" @click="MsgProduct()">商品信息</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
 
               <el-submenu index="3">
                 <template slot="title"><i class="el-icon-s-unfold icon"></i>商品分类管理</template>
                 <el-menu-item-group>
-                  <el-menu-item index="3-1">查询商品分类</el-menu-item>
-                  <el-menu-item index="3-2">新增商品分类</el-menu-item>
-                  <el-menu-item index="3-3">商品信息</el-menu-item>
+                  <el-menu-item index="3-1" @click="SearchProductClassify()">查询商品分类</el-menu-item>
+                  <el-menu-item index="3-2" @click="AddProductClassify()">新增商品分类</el-menu-item>
+                  <el-menu-item index="3-3" @click="MsgProductClassify()">商品分类信息</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
 
@@ -75,14 +75,29 @@ export default {
     MsgUser(){
       this.$router.push('/MsgUser')
     },
+    SearchProduct(){
+      this.$router.push('/SearchProduct')
+    },
+    AddProduct(){
+      this.$router.push('/AddProduct')
+    },
+    MsgProduct(){
+      this.$router.push('/MsgProduct')
+    },
+    SearchProductClassify(){
+      this.$router.push('/SearchProductClassify')
+    },
+    AddProductClassify(){
+      this.$router.push('/AddProductClassify')
+    },
+    MsgProductClassify(){
+      this.$router.push('/MsgProductClassify')
+    },
     MsgOrder(){
       this.$router.push('/MsgOrder')
     },
     SearchOrder(){
       this.$router.push('/SearchOrder')
-    },
-    SearchProduct(){
-      this.$router.push('/SearchProduct')
     }
   },
   mounted(){
