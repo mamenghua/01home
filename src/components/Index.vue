@@ -66,11 +66,11 @@ export default {
         });
           clearTimeout(this.timeout);
           this.timeout = null;
-          
+
         },500);
       }
-      
-      
+
+
     },
     lookPwd(){
       if(this.$refs.password.type == "password"){
@@ -89,7 +89,7 @@ export default {
 .container {
   height: 100%;
   background: url(../assets/bg.jpg) no-repeat;
-  background-size: 100%;
+  background-size: 100% 100%;
   overflow: hidden;
 }
 
