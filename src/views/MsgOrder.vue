@@ -16,7 +16,7 @@
         <li>{{no}}</li>
         <li>{{createdAt}}</li>
         <li>{{receiver}}</li>
-        <li>{{regions}}</li>
+        <li>{{regions}}{{address}}</li>
         <li>{{ispayed}}</li>
         <li><span class="change" @click="changeSta">{{chgTxt}}</span>{{xiegang}}<span class="delOrder" @click="del">{{delTxt}}</span></li>
       </ul>
@@ -37,6 +37,7 @@ export default{
       createdAt:'',
       ispayed:'',
       receiver:'',
+      address:'',
       delTxt:'',
       chgTxt:'',
       xiegang:''
@@ -52,6 +53,7 @@ export default{
           console.log(data.data)
           this.no = data.data.no
           this._id = data.data._id
+          this.address = data.data.address
           this.regions = data.data.regions
           this.receiver = data.data.receiver
           this.createdAt = data.data.createdAt
