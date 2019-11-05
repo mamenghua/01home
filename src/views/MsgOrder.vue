@@ -9,7 +9,7 @@
         <li>创建时间</li>
         <li>收货人</li>
         <li>地址</li>
-        <li>价格从v</li>
+        <li>价格</li>
         <li>状态</li>
         <li>操作</li>
       </ul>
@@ -17,8 +17,8 @@
         <li>{{no}}</li>
         <li>{{createdAt}}</li>
         <li>{{receiver}}</li>
-        <li>{{price}}</li>
         <li>{{regions}}{{address}}</li>
+        <li>{{price}}</li>
         <li>{{ispayed}}</li>
         <li><span class="change" @click="changeSta">{{chgTxt}}</span>{{xiegang}}<span class="delOrder" @click="del">{{delTxt}}</span></li>
       </ul>
