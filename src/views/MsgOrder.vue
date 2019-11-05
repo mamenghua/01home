@@ -9,6 +9,7 @@
         <li>创建时间</li>
         <li>收货人</li>
         <li>地址</li>
+        <li>价格从v</li>
         <li>状态</li>
         <li>操作</li>
       </ul>
@@ -16,6 +17,7 @@
         <li>{{no}}</li>
         <li>{{createdAt}}</li>
         <li>{{receiver}}</li>
+        <li>{{price}}</li>
         <li>{{regions}}{{address}}</li>
         <li>{{ispayed}}</li>
         <li><span class="change" @click="changeSta">{{chgTxt}}</span>{{xiegang}}<span class="delOrder" @click="del">{{delTxt}}</span></li>
@@ -34,6 +36,7 @@ export default{
       no:'',
       regions:'',
       _id:'',
+      price:'',
       createdAt:'',
       ispayed:'',
       receiver:'',
@@ -55,6 +58,7 @@ export default{
           this._id = data.data._id
           this.address = data.data.address
           this.regions = data.data.regions
+          this.price = data.data.price
           this.receiver = data.data.receiver
           this.createdAt = data.data.createdAt
           this.delTxt="删除此订单"
@@ -151,6 +155,7 @@ export default{
     float: left;
     list-style: none;
     text-align: center;
+    line-height: 30px;
     width: 15%;
   }
   li:nth-child(2){
