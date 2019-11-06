@@ -66,7 +66,6 @@ export default {
             this.nickName = data.data.nickName;
             this.password = data.data.password;
             this.avatar = data.data.avatar;
-            console.log(this.data);
           } else {
             this.$message({
               type: "info",
@@ -93,7 +92,6 @@ export default {
         .then(data => {
           if (data.data.addresses.length == 0) {
             this.addresses = "暂无收货地址";
-            console.log(this.addresses);
           } else {
             this.addresses = data.data.addresses;
           }

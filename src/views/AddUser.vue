@@ -50,7 +50,6 @@ export default{
         this.$refs.nickname.style.display='inline'
       }else{
         api.addUser(localStorage.getItem('token'),{userName:this.userName,password:this.password,nickName:this.nickName,avatar:''}).then((data)=>{
-          console.log(data)
           if(data.status==200){
             if(data.data.code=='error'){
               this.$alert(data.data.message, '系统消息', {

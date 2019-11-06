@@ -63,7 +63,6 @@ export default{
     api.getUser(localStorage.getItem('token'),{per:this.per,page:this.currentPage}).then((data)=>{
       this.tableData=data.data.users
       this.totalCount = data.data.totalCount
-      console.log(data.data)
     })
   },
   methods: {

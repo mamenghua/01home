@@ -5,9 +5,10 @@
       <el-input placeholder="请输入产品id" v-model="input"></el-input>
       <el-button type="primary" icon="el-icon-search" @click="search()">搜索</el-button>
     </div>
-    <div class="touxiang">
+    <!-- <div class="touxiang">
       <el-avatar icon="el-icon-user-solid"></el-avatar>
-    </div>
+    </div> -->
+    
 
     <div class="sty">
       <span class="tip">商品ID：</span>
@@ -33,11 +34,13 @@
       <span class="tip">商品分类id：</span>
       <el-input v-model="productCategory" :disabled="true" class="ipt"></el-input>
     </div>
-
+    
     <div class="sty"></div>
+    <img :src="coverImg"  min-width="120" height="120" />
+    <div class="sty"></div>
+
     <div class="sty">
       <el-button type="success" class="btn" @click="open()">保存</el-button>
-      <el-button type="danger" class="btn">删除</el-button>
     </div>
   </div>
 </template>
@@ -51,7 +54,6 @@ export default {
       input: "",
       token: localStorage.getItem("token"),
       data: {},
-
       content: "",
       coverImg: "",
       createdAt: "",
@@ -62,7 +64,8 @@ export default {
       productCategory: "",
       quantity: "",
       updatedAt: "",
-      _id: ""
+      _id: "",
+
     };
   },
   methods: {
@@ -79,7 +82,6 @@ export default {
         .then(data => {
           if (data.data._id !== undefined) {
             this.data = data.data;
-            console.log(data.data);
             this.content = data.data.content;
             this.coverImg = data.data.coverImg;
             this.createdAt = data.data.createdAt;
@@ -164,10 +166,10 @@ export default {
 </script>
 
 <style scoped>
-h2 {
+/* h2 {
   line-height: 20px;
   margin: 0;
-}
+} */
 .el-input {
   width: 20%;
   height: 50px;
@@ -175,18 +177,21 @@ h2 {
 }
 .sty {
   height: 50px;
-  line-height: 50px;
 }
-.touxiang {
+/* .touxiang {
   height: 80px;
   line-height: 120px;
-}
+} */
 
 .tip {
   display: inline-block;
   width: 120px;
   text-align: center;
   line-height: 40px;
+}
+.upload-demo {
+  width: 380px;
+  margin: 20px auto 0;
 }
 </style>
 

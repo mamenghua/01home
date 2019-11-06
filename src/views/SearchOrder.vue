@@ -70,7 +70,6 @@ export default{
     this.$axios.get("http://api.cat-shop.penkuoer.com/api/v1/admin/orders?",{
       headers:{'authorization':'Bearer '+this.token}
     }).then((data)=>{
-      console.log(data.data.orders)
       this.totalCount = data.data.totalCount
       this.tableData = data.data.orders
       for(let item in data.data.orders){
@@ -118,7 +117,6 @@ export default{
       })
     },
     currentChange(cpage){
-      console.log(cpage)
       api.getOrder(localStorage.getItem('token'),{per:this.per,page:cpage}).then((data)=>{
         this.totalCount = data.data.totalCount
         this.tableData = data.data.orders
