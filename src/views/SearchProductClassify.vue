@@ -119,7 +119,6 @@ export default {
       })
     },
     currentChange(cpage){
-      console.log(cpage)
       api.getProductsClassify(localStorage.getItem('token'),{per:this.per,page:cpage,name: ""}).then((data)=>{
         this.totalCount = data.data.totalCount
         this.tableData = data.data.categories
@@ -135,7 +134,6 @@ export default {
         name: ""
       })
       .then(data => {
-        console.log(data.data.categories);
         this.tableData = data.data.categories;
         this.totalCount = data.data.totalCount;
       });

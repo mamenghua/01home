@@ -101,7 +101,6 @@ export default {
     }
   },
   mounted(){
-    console.log(localStorage.getItem('token'))
     if(localStorage.getItem('token')==null){
       this.$notify({
         title: '警告',
@@ -158,7 +157,6 @@ export default {
     text-align: left;
     line-height: 200px;
   }
-
   .el-main {
     background-color: #E9EEF3;
     color: #333;

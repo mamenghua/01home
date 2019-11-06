@@ -53,7 +53,6 @@ export default{
         this.$axios.get("http://api.cat-shop.penkuoer.com/api/v1/admin/orders/"+this.input,{
           headers:{'authorization':'Bearer '+this.token}
         }).then((data)=>{
-          console.log(data.data)
           this.no = data.data.no
           this._id = data.data._id
           this.address = data.data.address
@@ -81,7 +80,6 @@ export default{
       this.$axios.delete("http://api.cat-shop.penkuoer.com/api/v1/admin/orders/"+this.input,{
         headers:{'authorization':'Bearer '+this.token}
       }).then((data)=>{
-        console.log(data)
         if(data.status==200){
           this.input=''
           this.no=''
@@ -99,8 +97,6 @@ export default{
       })
     },
     changeSta(){
-      console.log(this.ispayed)
-      console.log(this._id)
       if(this.ispayed=='未支付'){
         api.changeOrder(this._id,localStorage.getItem('token'),{isPayed:true}).then((data)=>{
           this.$message({

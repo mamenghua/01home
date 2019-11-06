@@ -158,7 +158,6 @@ export default {
         page: 1,
         name: ""
       }).then(data => {
-        console.log(data.data.products);
         this.tableData = data.data.products;
         this.totalCount = data.data.totalCount;
       });
