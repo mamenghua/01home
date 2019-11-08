@@ -21,7 +21,7 @@
       <span class="tip">商品分类描述：</span>
       <el-input v-model="descriptions" class="ipt"></el-input>
     </div>
-    
+
     <div class="sty">
       <span class="tip">分类上架时间：</span>
       <el-input v-model="createdAt" :disabled="true" class="ipt"></el-input>
@@ -71,7 +71,6 @@ export default {
         .then(data => {
           if (data.data._id !== undefined) {
             this.data = data.data;
-            console.log(data.data);
             this.coverImg = data.data.coverImg;
             this.createdAt = data.data.createdAt;
             this.descriptions = data.data.descriptions;
@@ -116,7 +115,6 @@ export default {
                 coverImg: this.data.coverImg
               }
             }).then(data => {
-              console.log(data.data);
               if (data.data) {
                 this.$message({
                   type: "success",
@@ -173,4 +171,3 @@ h2 {
   line-height: 40px;
 }
 </style>
-

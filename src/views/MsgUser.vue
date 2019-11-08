@@ -103,7 +103,6 @@ export default {
           password: this.password
         })
         .then(data => {
-          console.log(data.data);
         });
       api
         .updataUser(this.input, localStorage.getItem("token"), {

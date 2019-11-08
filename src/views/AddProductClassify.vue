@@ -27,7 +27,7 @@ export default{
   data(){
     return{
       name:'',
-      descriptions:'' 
+      descriptions:''
     }
   },
   methods:{
@@ -54,7 +54,6 @@ export default{
               message: "添加商品分类成功！"
 
             })
-            console.log(data.data);
           }else{
             this.$message({
               type: 'info',
@@ -62,7 +61,6 @@ export default{
             })
           }
         }).catch((data)=>{
-          console.log(data);
           this.$message({
             type: 'info',
             message: "添加商品分类失败！"

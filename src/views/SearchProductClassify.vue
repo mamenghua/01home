@@ -60,7 +60,6 @@ export default {
       })
         .then(() => {
           // 确认删除，执行删除
-          console.log(index);
           axios({
             url:
               "http://api.cat-shop.penkuoer.com/api/v1/admin/product_categories/" +
@@ -70,7 +69,6 @@ export default {
               authorization: "Bearer " + localStorage.getItem("token")
             }
           }).then(data => {
-            console.log(data.data);
             if (data.data) {
               this.$message({
                 type: "success",
@@ -83,7 +81,6 @@ export default {
                   name: ""
                 })
                 .then(data => {
-                  console.log(data.data.categories);
                   this.tableData = data.data.categories;
                   this.totalCount = data.data.totalCount;
                 });
@@ -107,7 +104,7 @@ export default {
       api.getProductsClassify(localStorage.getItem('token'),{per:this.per,page:this.currentPage,name: ""}).then((data)=>{
         this.totalCount = data.data.totalCount
         this.tableData = data.data.categories
-        
+
       })
     },
     prev(){
@@ -115,14 +112,14 @@ export default {
       api.getProductsClassify(localStorage.getItem('token'),{per:this.per,page:this.currentPage,name: ""}).then((data)=>{
         this.totalCount = data.data.totalCount
         this.tableData = data.data.categories
-        
+
       })
     },
     currentChange(cpage){
       api.getProductsClassify(localStorage.getItem('token'),{per:this.per,page:cpage,name: ""}).then((data)=>{
         this.totalCount = data.data.totalCount
         this.tableData = data.data.categories
-        
+
       })
     }
   },

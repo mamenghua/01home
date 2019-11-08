@@ -8,7 +8,7 @@
     <!-- <div class="touxiang">
       <el-avatar icon="el-icon-user-solid"></el-avatar>
     </div> -->
-    
+
 
     <div class="sty">
       <span class="tip">商品ID：</span>
@@ -34,7 +34,7 @@
       <span class="tip">商品分类id：</span>
       <el-input v-model="productCategory" :disabled="true" class="ipt"></el-input>
     </div>
-    
+
     <div class="sty"></div>
     <img :src="coverImg"  min-width="120" height="120" />
     <div class="sty"></div>
@@ -134,7 +134,6 @@ export default {
                 productCategory: this.productCategory
               }
             }).then(data => {
-              console.log(data.data);
               if (data.data) {
                 this.$message({
                   type: "success",
@@ -194,4 +193,3 @@ export default {
   margin: 20px auto 0;
 }
 </style>
-

@@ -63,13 +63,10 @@ export default {
   },
   methods: {
     handleRemove(file, fileList) {
-      console.log(file, fileList);
     },
     handlePreview(file) {
-      console.log(file);
     },
     handleSuccess(response,file,fileList){
-      console.log(response,file,fileList)
       this.fileList=fileList;
     },
     commit() {
@@ -86,8 +83,6 @@ export default {
         this.$refs.descriptions.style.display = "none";
         this.$refs.quantity.style.display = "inline";
       } else {
-        console.log(parseInt(this.quantity));
-        console.log(this.fileList)
         api
           .addProducts(localStorage.getItem("token"), {
             name: this.name,
@@ -103,7 +98,6 @@ export default {
                 type: "success",
                 message: "添加成功！"
               });
-              console.log(data.data);
             } else {
               this.$message({
                 type: "info",
@@ -124,10 +118,7 @@ export default {
 </script>
 
 <style scoped>
-/* h2 {
-  line-height: 20px;
-  margin: 0;
-} */
+
 .el-input {
   height: 50px;
   line-height: 50px;

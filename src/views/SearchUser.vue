@@ -103,27 +103,6 @@ export default{
       })
 
 
-
-      //删除
-      // this.$axios.delete("http://api.cat-shop.penkuoer.com/api/v1/admin/users/"+index,{
-      //   headers:{'authorization':'Bearer '+this.token}
-      // }).then((data)=>{
-      //   //提示消息
-      //   this.$message({
-      //     type: 'success',
-      //     message: '删除成功!'
-      //   });
-      //   //再次获取 刷新路由
-      //   this.$axios.get("http://api.cat-shop.penkuoer.com/api/v1/admin/users?",{
-      //     headers:{'authorization':'Bearer '+this.token}
-      //   }).then((data)=>{
-      //     this.tableData=data.data.users
-      //   })
-      // })
-
-      // api.deleteUser(localStorage.getItem('token'),{index}).then((data)=>{
-      //   console.log(data)
-      // })
     },
     next(){
       this.currentPage++
@@ -140,7 +119,6 @@ export default{
       })
     },
     currentChange(cpage){
-      console.log(cpage)
       api.getUser(localStorage.getItem('token'),{per:this.per,page:cpage}).then((data)=>{
         this.tableData=data.data.users
         this.totalCount = data.data.totalCount
