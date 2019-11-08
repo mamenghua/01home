@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div class="sty">
+      <el-input placeholder="请输入产品名称，模糊查询" v-model="name"></el-input>
+      <el-button type="primary" icon="el-icon-search" @click="search()">搜索</el-button>
+    </div>
     <el-table
       :data="tableData"
       :cell-style="cellStyle"
@@ -44,12 +48,23 @@ export default {
   data() {
     return {
       tableData: [],
+      name:"",
       totalCount: 0,
       page: 10,
-      currentPage: 1
+      currentPage: 1,
     };
   },
   methods: {
+    search(){
+      api.getProducts(localStorage.getItem("token"), {
+        per: this.per,
+        page: 1,
+        name: this.name
+      }).then(data => {
+        this.tableData = data.data.products;
+        this.totalCount = data.data.totalCount;
+      });
+    },
     cellStyle({ row, column, rowIndex, columnIndex }) {
       return "text-align:center";
     },
@@ -85,9 +100,9 @@ export default {
               });
               api
                 .getProducts(localStorage.getItem("token"), {
-                  per: 10,
+                  per: this.per,
                   page: 1,
-                  name: ""
+                  name: this.name
                 })
                 .then(data => {
                   console.log(data.data.products);
@@ -115,8 +130,7 @@ export default {
         .getProducts(localStorage.getItem("token"), {
           per: this.per,
           page: this.currentPage,
-
-          name: ""
+          name: this.name
         })
         .then(data => {
           console.log(data.data.products);
@@ -129,8 +143,7 @@ export default {
       api.getProducts(localStorage.getItem("token"), {
           per: this.per,
           page: this.currentPage,
-
-          name: ""
+          name: this.name
         })
         .then(data => {
           console.log(data.data.products);
@@ -144,7 +157,7 @@ export default {
         .getProducts(localStorage.getItem("token"), {
           per: this.per,
           page: cpage,
-          name: ""
+          name: this.name
         })
         .then(data => {
           this.tableData = data.data.products;
@@ -156,7 +169,7 @@ export default {
     api.getProducts(localStorage.getItem("token"), {
         per: 10,
         page: 1,
-        name: ""
+        name: this.name
       }).then(data => {
         this.tableData = data.data.products;
         this.totalCount = data.data.totalCount;
@@ -166,4 +179,12 @@ export default {
 </script>
 
 <style scoped>
+.el-input {
+  width: 20%;
+  height: 50px;
+  margin-top: 20px;
+}
+.sty {
+  height: 100px;
+}
 </style>
